@@ -20,19 +20,19 @@ A way to learn Python
  在函数的parameter之前添加一个\*可以将函数变为支持可变参数的函数,在函数内部,可变参数将会转化为一个tuple.同样,在list和tuple之前加一个\*便可以将list和tuple转化为可变参数.
  ##### 3. 关键字参数
  关键字参数的函数允许传入任意个含参数名的参数，这些关键字参数在函数内部自动组装成一个dict.
- ``
-  def person(name, age, **kw):
+ ```
+  def person(name, age, **kw):
     print('name:', name, 'age:', age, 'other:', kw)
   >>> person('Michael', 30)
   name: Michael age: 30 other: {}
- ``
+ ```
  kw必定是一个dict的数据结构,注意如果传入一个kw的dict结构,获得的将是一份拷贝而非原来的kw,因此方法内部对kw的改造并不影响之前的object.
  ##### 4. 命名关键字参数
  命名关键字参数允许函数的参数只接受需要的关键字参数.
- ``
+ ```
   def person(name, age, *, city, job):
     print(name, age, city, job)
   >>> person('Jack', 24, city='Beijing', job='Engineer')
   Jack 24 Beijing Enginee
- ``
+ ```
  该函数只可以接受city和job作为key的参数.注意中间需要用\*分隔开.命名关键字参数必须要传入参数名.
