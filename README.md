@@ -37,7 +37,7 @@ A way to learn Python
   Jack 24 Beijing Enginee
  ```
  该函数只可以接受city和job作为key的参数.注意中间需要用\*分隔开.命名关键字参数必须要传入参数名.
- ##### 参数部分总结
+ #### 参数部分总结
  \*args是可变参数,接受的是一个tuple.<br>
  \*\*kw是关键字参数，接受的是一个dict.<br>
  可变参数和关键字参数都可以直接传入数值,或先组装成\*tuple和\*\*tw在传到方法里.<br>
