@@ -89,7 +89,7 @@ def fact_iter(num, product):
  从上面我们可以看出,栈的调用情况被简化了.
  #### 三.高级特性
  ##### 1. 切片
- 不同于Java,python允许操作list就像操作字符串,对于一个list,可以直接使用切片取其中的一段元素.
+ 不同于Java,Python允许操作list就像操作字符串,对于一个list,可以直接使用切片取其中的一段元素.
  ```
  L = list(range(100))
  L[:10]
@@ -97,4 +97,27 @@ def fact_iter(num, product):
  L[-1:-20] #python支持负index,最后一个数的index是-1
  L[:10:2] #从0到10每2个数取一个
  ```
- 切片可以运用于list,tuple和字符串,Java中的substring就类似于python中切片对字符串的操作.
+ 切片可以运用于list,tuple和字符串,Java中的substring就类似于Python中切片对字符串的操作.
+ ##### 2. 迭代
+ Python的迭代不仅可用于list,也可以用于tuple和dict.
+```
+ d = {'a' : 1, 'b' : 2, 'c' : 3}
+ for key in d:
+    print(key)
+
+ for value in d.values():
+    print(value)
+
+ for k, v in d.items():
+    print(k,v)
+```
+ 通过collections模块的Iterable类型来判断一个对象是否可以被迭代对象:
+```
+ from collections import Iterable
+ isinstance('abc',Iterable)
+```
+ Python中也有类似Java里的下表循环,需要使用enumerate函数将list变成索引-元素对.
+```
+ for i,value in enumerate(['A','B','C']):
+    print(i,value)
+ ```
