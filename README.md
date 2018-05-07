@@ -138,6 +138,11 @@ def fact_iter(num, product):
  print(r'C:\nowhere')
  输出结果: C:\nowhere
 ```
+3. len()获取长度,list()可以将任何一个类型的序列转化为List,而''.join(alist)则可以将任何List转换为字符串.
+```
+ list('hello') #结果为['h','e','l','l','o']
+ ''.join(list('hello')) #结果为'hello'
+```
 #### 五. List & Tuple
 1. List使用[]表示,而Tuple使用()表示.
 2. 使用+运算符可以将两个List连接在一起,而使用乘法*将会把一个List乘以n次得到新的List,其中原来的List被重复了n次.
