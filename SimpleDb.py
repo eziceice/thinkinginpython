@@ -19,7 +19,7 @@ def enter_command():
     cmd = cmd.strip().lower()
     return cmd
 
-if __name__ == '__main__':
+def run():
     database = shelve.open('path')
     try:
         while True:
@@ -33,4 +33,5 @@ if __name__ == '__main__':
     finally:
         database.close()
 
-
+if __name__ == '__main__':
+    run()
