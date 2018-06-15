@@ -11,13 +11,12 @@ def create_server():
     port = 1234
     s.bind((host, port))
     s.listen(5)
-    notconnect = True
-    while notconnect:
+    while True:
         c, addr = s.accept()
         print('Got connection from', addr)
         c.send('Thank you for connecting')
         c.close()
-        notconnect = False
+
 
 def create_client():
     s = socket.socket()
