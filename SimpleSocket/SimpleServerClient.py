@@ -1,5 +1,9 @@
 import socket
 import threading
+import ctypes
+import sys
+
+print(ctypes.windll.shell32.IsUserAnAdmin())
 
 class MyThread(threading.Thread):
     def run(self):
@@ -8,20 +12,21 @@ class MyThread(threading.Thread):
 def create_server():
     s = socket.socket()
     host = socket.gethostname()
-    port = 1234
+    port = 12345
     s.bind((host, port))
     s.listen(5)
     while True:
         c, addr = s.accept()
         print('Got connection from', addr)
-        c.send('Thank you for connecting')
+        message = 'Thanks for your messages'
+        c.send(message.encode())
         c.close()
 
 
 def create_client():
     s = socket.socket()
     host = socket.gethostname()
-    port = 1234
+    port = 12345
     s.connect((host, port))
     print(s.recv(1024))
 
