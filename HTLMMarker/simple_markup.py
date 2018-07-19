@@ -1,6 +1,12 @@
 import sys, re
 from util import *
 
+'''
+运行时从console cd到对应的路径然后运行
+python simple_markup.py < text_input.txt > test_output.html
+即可生成对应的html文件
+'''
+
 print('<html><head><title>...</title><body>')
 
 title = True
@@ -16,6 +22,3 @@ for block in blocks(sys.stdin):
         print(block)
         print('</p>')
     print('</body></html>')
-
-
-
