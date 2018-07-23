@@ -1,9 +1,9 @@
 import sys, re
-from util import *
+from Util import *
 
 '''
 运行时从console cd到对应的路径然后运行
-python simple_markup.py < text_input.txt > test_output.html
+python SimpleMarkup.py < text_input.txt > test_output.html
 即可生成对应的html文件
 '''
 
