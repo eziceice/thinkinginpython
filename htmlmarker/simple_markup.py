@@ -1,12 +1,12 @@
 import sys, re
 
 from rules.Rule import *
-from Util import *
-from handlers.Handler import *
+from util import *
+from handlers.handler import *
 
 """
 运行时从console cd到对应的路径然后运行
-python SimpleMarkup.py < test_input.txt > test_output.html
+python simple_markup.py < test_input.txt > test_output.html
 即可生成对应的html文件
 """
 
