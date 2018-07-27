@@ -21,10 +21,10 @@ class Parser:
         self.rules = []
         self.filters = []
 
-    def addRule(self, rule):
+    def add_rule(self, rule):
         self.rules.append(rule)
 
-    def addFilter(self, pattern, name):
+    def add_filter(self, pattern, name):
         def filter(block, handler):  # 创建一个过滤器
             return re.sub(pattern, handler.sub(name), block)  # sub pattern为正则, 第二个参数为要替换的字符串(可为函数), 第三个参数为原始字符串
 
@@ -50,18 +50,17 @@ class BasicTextParser(Parser):
     """
     def __init__(self, handler):
         Parser.__init__(self, handler)
-        self.addRule(ListRule())
-        self.addRule(ListItemRule())
-        self.addRule(TitleRule())
-        self.addRule(HeadlineRule())
-        self.addRule(ParagraphRule())
+        self.add_rule(ListRule())
+        self.add_rule(ListItemRule())
+        self.add_rule(TitleRule())
+        self.add_rule(HeadlineRule())
+        self.add_rule(ParagraphRule())
 
-        self.addFilter(r'\*(.+?\*)', 'emphasis')
-        self.addFilter(r'(http://[\.a-zA-Z/]+)', 'url')
-        self.addFilter(r'([\.a-zA-Z]+@[\.a-zA-Z]+[a-zA-Z]+)', 'mail')
+        self.add_filter(r'\*(.+?\*)', 'emphasis')
+        self.add_filter(r'(http://[\.a-zA-Z/]+)', 'url')
+        self.add_filter(r'([\.a-zA-Z]+@[\.a-zA-Z]+[a-zA-Z]+)', 'mail')
 
 
 handler = HTMLRenderer()
 parser = BasicTextParser(handler)
-
 parser.parse(sys.stdin)
