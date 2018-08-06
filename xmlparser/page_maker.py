@@ -30,5 +30,15 @@ class PageMaker(ContentHandler):
         if self.pass_through:
             self.out.write(content)
 
+    def defaultStart(self, name, attrs):
+        if self.pass_through:
+            self.out.write('<' + name)
+            for key, val in attrs.items():
+                self.out.write(' {}= "{}"'.format(key, val))
+            self.out.write('>')
+
+    def defaultEnd(self, name):
+        if self.pass_through:
+            self.out.write('</{}>'.format(name))
 
 parse('website.xml', PageMaker())

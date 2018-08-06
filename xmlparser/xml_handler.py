@@ -1,5 +1,6 @@
 from xml.sax.handler import ContentHandler
 from xml.sax import parse
+from xmlparser import website
 
 
 class HeadlineHandler(ContentHandler):
@@ -26,8 +27,10 @@ class HeadlineHandler(ContentHandler):
             self.data.append(content)
 
 
-headlines = []
-parse('website.xml', HeadlineHandler(headlines))
-for h in headlines:
-    print(h)
+class TestHandler(website.Dispatcher, ContentHandler):
 
+    def start_page(self, attrs):
+        print('Beginning page', attrs['name'])
+
+    def end_page(self):
+        print('Ending Page')
