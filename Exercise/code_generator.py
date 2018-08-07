@@ -1,6 +1,7 @@
 from random import *
 import string
 import sqlite3
+import redis
 
 
 def generate(break_digits, code_length):
@@ -34,15 +35,21 @@ def create_db(create_sql):
 
 
 if __name__ == '__main__':
-    create_sql = 'Create Table codes(id Integer Primary Key, code Text)'
-    insert_sql = 'Insert into codes(code) Values(?)'
-    create_db(create_sql)
-    list = []
+    # Sqllite implementation
+    # create_sql = 'Create Table codes(id Integer Primary Key, code Text)'
+    # insert_sql = 'Insert into codes(code) Values(?)'
+    # create_db(create_sql)
+    # list = []
+    # for i in range(200):
+    #     list.append(generate(4, 16))
+    #     insert_db(insert_sql, list[i])
+    # db = sqlite3.connect('db/yutian_db')
+    # cursor = db.cursor()
+    # for row in cursor.execute('select * from codes'):
+    #     print(row)
+    re = redis.Redis(host='127.0.0.1', port=6379, db=0, password=666) # Need to have a db to connect for redis
     for i in range(200):
-        list.append(generate(4, 16))
-        insert_db(insert_sql, list[i])
-    db = sqlite3.connect('db/yutian_db')
-    cursor = db.cursor()
-    cursor.execute('select * from codes')
-    print(cursor.fetchall())
+        re.set(i, generate(4, 16))
 
+    for i in re.dbsize():
+        print(re.get(i))
