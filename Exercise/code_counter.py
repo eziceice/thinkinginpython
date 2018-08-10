@@ -12,20 +12,32 @@ def find_files(root_dir):
 
 def count_codes(file_path):
     blank = 0
-    comment = 0
-    coding = 0
-    codes = open(file_path, 'r', encoding='utf-8').readlines()
-    for code in codes:
-        code = code.replace('\n', '')
-        if not code.strip():
-            blank = blank + 1
-        elif code.strip().startswith('#'):
-            comment = comment + 1
-        elif code.strip().startswith('\'') or code.strip().startswith('\"'):
-            pass # need to thing another way
+    comments = 0
+    codings = 0
+    totallines = 0
+    codes = open(file_path, 'r', encoding='utf-8')
+
+    while True:
+        line = codes.readline()
+        totallines += 1
+        if not line:
+            break
+        elif line.strip().startswith('#'):
+            comments += 1
+        elif line.strip().startswith("'''") or line.strip().startswith('"""'):
+            comments += 1
+            while True:
+                line = codes.readline()
+                totallines += 1
+                comments += 1
+                if ("'''" in line) or ('"""' in line):
+                    break
+        elif line.strip():
+            codings += 1
         else:
-            coding = coding + 1
-    print(file_path, blank, comment, coding)
+            blank += 1
+
+    print(file_path, totallines, blank, comments, codings)
 
 
 if __name__ == '__main__':
