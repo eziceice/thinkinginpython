@@ -58,5 +58,5 @@ class XLSXConverter(Converter):
 
 
 if __name__ == '__main__':
-    converter = XLSXConverter()
-    converter.convert_to_xml('resources/numbers.xlsx')
+    xlsx = pandas.read_excel('resources/test.xls', usecols='C')
+    print(xlsx.get_values().sum())
