@@ -58,5 +58,9 @@ class XLSXConverter(Converter):
 
 
 if __name__ == '__main__':
-    xlsx = pandas.read_excel('resources/test.xls', usecols='C')
-    print(xlsx.get_values().sum())
+    xlsx = pandas.read_excel('resources/test.xls', names=['seconds'], usecols='C', dtype=dict)
+    sum = 0
+    for i in range(89):
+        value = xlsx.get('seconds').get(i)
+        sum += value
+    print(sum)
