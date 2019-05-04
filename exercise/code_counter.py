@@ -41,6 +41,6 @@ def count_codes(file_path):
 
 
 if __name__ == '__main__':
-    all_files = find_files('../Exercise')
+    all_files = find_files('../exercise')
     for file in all_files:
         count_codes(file)
